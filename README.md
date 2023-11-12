@@ -47,3 +47,36 @@
 #### Admin
 * /admin/login: Admin login endpoint.
 * /admin/signup: Admin signup endpoint.
+
+#### Auth
+* /token: Endpoint for token generation and authentication.
+
+#### Product
+* GET /product/products: Get all products.
+* POST /product/: Create/Register a new product.
+* GET /product/{product_id}: Get product by id
+* PUT /product/{product_id}: Update product
+* DELETE /product/{product_id}: Delete a product
+
+#### Category
+* GET /category/categories: Get all categories.
+* POST /category/: Create a new category.
+* GET /category/{category_id}: Get category by ID.
+* PUT /category/{category_id}: Update category.
+* DELETE /category/{category_id}: Delete a category.
+
+#### Inventory
+* GET /inventory/inventories: Get all inventories.
+* GET /inventory/low-stock: Get low stock alerts.
+* POST /inventory/: Create a new inventory.
+* GET /inventory/{inventory_id}: Get inventory by ID.
+* PUT /inventory/{inventory_id}: Update inventory.
+* DELETE /inventory/{inventory_id}: Delete an inventory.
+
+#### Sales
+* GET /sale/sales: Get sales with optional filters for start date, end date, product ID, and category ID.
+* GET /sale/revenue: Get revenue analysis based on a specified timeframe (daily, weekly, monthly, or annual).
+* POST /sale/: Create a new sale.
+* GET /sale/{sale_id}: Get sale by ID.
+* PUT /sale/{sale_id}: Update sale.
+* DELETE /sale/{sale_id}: Delete a sale.

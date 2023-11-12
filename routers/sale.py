@@ -54,7 +54,7 @@ def get_date_key(date: datetime, timeframe: str):
         return date.year
 
 
-@SaleRouter.get("/sales/revenue")
+@SaleRouter.get("/revenue")
 async def get_revenue_analysis(
     timeframe: str = Query(..., regex="^(daily|weekly|monthly|annual)$")
 ):
