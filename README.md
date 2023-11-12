@@ -9,7 +9,7 @@
 2. Set up a MYSQL database.
 3. Clone the repository:
    ```
-   git clone https://github.com/your-repository/ecommerceAdminFastApi.git
+   git clone https://github.com/waysiPire0/ecommerceAdminFastApi.git
    ```
 4. Navigate to the project directory:
    ```
