@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException, Depends
 from schemas.CategorySchema import CategoryCreate, CategoryOut, CategoryUpdate
+from configs.environment import get_environment_variables
 from .auth import get_current_user
 from services.CategoryService import (
     create_category,
@@ -10,7 +11,15 @@ from services.CategoryService import (
 )
 from typing import List
 
-CategoryRouter = APIRouter(prefix="/category", tags=["category"])
+env = get_environment_variables()
+
+CategoryRouter = APIRouter(prefix=f"/{env.API_VERSION}/category", tags=["Category"])
+
+
+@CategoryRouter.get("/categories", response_model=List[CategoryOut])
+async def get_all_categories_endpoint():
+    categories = await get_all_categories()
+    return categories
 
 
 @CategoryRouter.post("/", response_model=CategoryOut)
@@ -25,12 +34,6 @@ async def get_category_endpoint(category_id: int):
     if not category:
         raise HTTPException(status_code=404, detail="Category not found")
     return category
-
-
-@CategoryRouter.get("/", response_model=List[CategoryOut])
-async def get_all_categories_endpoint():
-    categories = await get_all_categories()
-    return categories
 
 
 @CategoryRouter.put("/{category_id}", response_model=CategoryOut)

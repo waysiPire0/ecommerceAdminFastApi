@@ -26,6 +26,14 @@ class Category(models.Model):
     description = fields.TextField()
 
 
+class Inventory(models.Model):
+    inventory_id = fields.IntField(pk=True)
+    product = fields.ForeignKeyField("models.Product", related_name="inventory")
+    quantity_available = fields.IntField()
+    low_stock_threshold = fields.IntField()
+    last_updated = fields.DatetimeField(auto_now=True)
+
+
 class Sale(models.Model):
     sale_id = fields.IntField(pk=True)
     product = fields.ForeignKeyField("models.Product", related_name="sales")
@@ -41,11 +49,3 @@ class Customer(models.Model):
     email = fields.CharField(max_length=255)
     phone = fields.CharField(max_length=255)
     address = fields.TextField()
-
-
-class Inventory(models.Model):
-    inventory_id = fields.IntField(pk=True)
-    product = fields.ForeignKeyField("models.Product", related_name="inventory")
-    quantity_available = fields.IntField()
-    low_stock_threshold = fields.IntField()
-    last_updated = fields.DatetimeField(auto_now=True)

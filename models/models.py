@@ -8,7 +8,7 @@ class Product(models.Model):
     name = fields.CharField(max_length=255)
     description = fields.TextField()
     price = fields.DecimalField(max_digits=10, decimal_places=2)
-    # category = fields.ForeignKeyField("models.Category", related_name="products")
+    category = fields.ForeignKeyField("models.Category", related_name="products")
     created_at = fields.DatetimeField(auto_now_add=True)
     updated_at = fields.DatetimeField(auto_now=True)
 
@@ -23,6 +23,31 @@ class Category(models.Model):
 
     class Meta:
         table = "categories"
+
+
+class Inventory(models.Model):
+    inventory_id = fields.IntField(pk=True)
+    product = fields.ForeignKeyField("models.Product", related_name="inventory")
+    quantity_available = fields.IntField()
+    low_stock_threshold = fields.IntField()
+    last_updated = fields.DatetimeField(auto_now=True)
+
+
+class Sale(models.Model):
+    sale_id = fields.IntField(pk=True)
+    product = fields.ForeignKeyField("models.Product", related_name="sales")
+    quantity = fields.IntField()
+    sale_date = fields.DatetimeField(default=datetime.utcnow)
+    total_price = fields.DecimalField(max_digits=10, decimal_places=2)
+    customer = fields.ForeignKeyField("models.Customer", related_name="sales")
+
+
+class Customer(models.Model):
+    customer_id = fields.IntField(pk=True)
+    name = fields.CharField(max_length=255)
+    email = fields.CharField(max_length=255, null=True)
+    phone = fields.CharField(max_length=255, null=True)
+    address = fields.TextField(null=True)
 
 
 class AdminUser(models.Model):

@@ -3,6 +3,10 @@ from models.models import Product
 from tortoise.exceptions import DoesNotExist
 
 
+async def get_all_products():
+    return await Product.all()
+
+
 async def create_product(product_data: ProductCreate):
     product = await Product.create(**product_data.dict())
     return product

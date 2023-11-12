@@ -7,15 +7,22 @@ from services.ProductService import (
     get_product,
     update_product,
     delete_product,
+    get_all_products,
 )
+from typing import List
 
 env = get_environment_variables()
 
 ProductRouter = APIRouter(prefix=f"/{env.API_VERSION}/product", tags=["product"])
-# router = APIRouter()
 
 
-@ProductRouter.post("/create/", response_model=ProductOut)
+@ProductRouter.get("/products", response_model=List[ProductOut])
+async def get_all_product_endpoint():
+    products = await get_all_products()
+    return products
+
+
+@ProductRouter.post("/", response_model=ProductOut)
 async def create_product_endpoint(product: ProductCreate):
     return await create_product(product)
 
