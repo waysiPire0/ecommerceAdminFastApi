@@ -23,7 +23,7 @@ SaleRouter = APIRouter(prefix=f"/{env.API_VERSION}/sale", tags=["Sales"])
 
 
 @SaleRouter.get("/sales")
-async def get_sales(
+async def get_sales_with_filter(
     start_date: Optional[date] = None,
     end_date: Optional[date] = None,
     product_id: Optional[int] = None,

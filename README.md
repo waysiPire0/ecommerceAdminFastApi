@@ -80,3 +80,10 @@
 * GET /sale/{sale_id}: Get sale by ID.
 * PUT /sale/{sale_id}: Update sale.
 * DELETE /sale/{sale_id}: Delete a sale.
+
+#### Customers
+* GET /customer/customers: Get all customers.
+* POST /customer/: Create a new customer.
+* GET /customer/{customer_id}: Get customer by ID.
+* PUT /customer/{customer_id}: Update customer.
+* DELETE /customer/{customer_id}: Delete a customer.
