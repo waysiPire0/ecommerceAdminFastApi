@@ -12,13 +12,12 @@ def get_env_filename():
 class EnvironmentSettings(BaseSettings):
     API_VERSION: str
     APP_NAME: str
-    SECRET: str
+    SECRET: str = "4d1453f51b0ceb06cfccd8d0ba5228223ced814f"
     DB_NAME: str
     DB_HOST: str
     DB_PORT: int
     DB_USER: str
     DB_PASSWORD: str
-    DEBUG_MODE: bool
 
     class Config:
         env_file = get_env_filename()

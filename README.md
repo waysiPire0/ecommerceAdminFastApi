@@ -19,7 +19,21 @@
    ```
    pip install -r requirements.txt
    ```
-6. Start the server:
+6. Create a .env file in the project root with the following contents:
+   ```
+    API_VERSION=v1
+    APP_NAME=E-Commerce Admin Dashboard API
+    DB_NAME=your_db_name
+    DB_USER=your_db_username
+    DB_PASSWORD=your_db_password
+    DB_HOST=localhost
+    DB_PORT=3306
+   ```
+7. Initialize and Populate the Database:
+   ```
+   python zpopulate.py
+   ```
+8. Run the Application:
    ```
    uvicorn main:app --reload
    ```
