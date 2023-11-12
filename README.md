@@ -40,3 +40,10 @@
 7. Open your browser and navigate to `http://localhost:8000/docs`.
 8. Explore the features of the application.
 
+
+
+### API Endpoints
+
+#### Admin
+* /admin/login: Admin login endpoint.
+* /admin/signup: Admin signup endpoint.
